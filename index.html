@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #eeeeee;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #2c2c2c;
+    }
+
+    .nav a:hover {
+      opacity: 0.65;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 28px 90px;
+    }
+
+    .hero-image {
+      margin-bottom: 42px;
+    }
+
+    .hero-image img {
+        width: 80%;
+        max-width: 900px;   
+        height: auto;
+        object-fit: cover;
+        margin: 0 auto; 
+      
+    }
+    
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+
+    .intro h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.35;
+      margin-bottom: 22px;
+      color: #111111;
+    }
+
+    .intro p {
+      font-size: 16px;
+      color: #444444;
+    }
+
+    .story-block {
+      margin-bottom: 86px;
+    }
+
+    .story-image {
+      margin-bottom: 26px;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .story-image img:hover {
+      transform: scale(1.03);
+    }
+
+    .story-text {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .story-text h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 18px;
+      text-align: center;
+      color: #111111;
+    }
+
+    .story-text p {
+      font-size: 15px;
+      color: #444444;
+      margin-bottom: 16px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .story-text p.center {
+      text-align: center;
+    }
+
+    .resume-section {
+  max-width: 760px;
+  margin: 0 auto 86px;
+}
+
+.resume-section h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #111111;
+}
+
+.resume-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 768px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resume-card {
+  border: 1px solid #eeeeee;
+  padding: 24px 22px;
+  background: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.resume-card h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #111111;
+}
+
+.resume-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #222222;
+}
+
+.resume-meta {
+  font-size: 13px;
+  color: #777777;
+  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+}
+
+.resume-card p {
+  font-size: 15px;
+  color: #444444;
+  margin-bottom: 10px;
+}
+
+.skills-list,
+.interests-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.skill-tag,
+.interest-tag {
+  border: 1px solid #dddddd;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #333333;
+  background: #fafafa;
+}
+
+
+
+    .footer {
+      border-top: 1px solid #eeeeee;
+      margin-top: 20px;
+      padding-top: 30px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #777777;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+      }
+
+      .intro h1 {
+        font-size: 31px;
+      }
+
+      .story-text h2 {
+        font-size: 25px;
+      }
+
+      .page {
+        padding-top: 38px;
+      }
+    }
+    
+    .cert-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.cert-link:hover {
+  color: #1d4ed8;
+}
+
+    .fade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
+    .fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">Nakshath Venkatesh</div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#my-story">My Story</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#other interests">Other Interests </a>
+        <a href="https://www.instagram.com/nakshath_venkatesh/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/nakshath-venkatesh/" target="_blank">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" id="home">
+    <section class="hero-image fade" id="my-story">
+        <img src="./images1/hero.jpeg" alt="Hero image">
+    </section>
+
+    <section class="intro fade">
+      <h1>Hello!! My name is Nakshath Venkatesh, and this is my story.</h1>
+      <p>
+        It has been a journey shaped by ambition, discipline, sport, business, and a constant drive to keep building toward something bigger.
+      </p>
+    </section>
+
+    <section class="resume-section fade" id="overview">
+        <h2>Quick Overview</h2>
+        <div class="skills-list">
+          <div class="skill-tag">Asian Games Shortlisted for show-jumping</div>
+          <div class="skill-tag">3rd Place in Nationals for consecutive 2 years</div>
+          <div class="skill-tag">Received several international podium standings</div>
+          <div class="skill-tag">IIM Bangalore Student</div>
+          <div class="skill-tag">Start-up Owner</div>
+        </div>
+      </section>
+
+
+    <section class="story-block fade">
+      <div class="story-image">
+        <img src="images1/riding.jpeg" alt="Early life image">
+      </div>
+      <div class="story-text">
+        <h2>Born and Raised with Purpose</h2>
+        <p>
+            From a young age, I have always been drawn to environments that demanded discipline, perseverance, and predictability. Whether it was in academics, sports, or leadership, I quickly learned that development occurs through repetition, exposure to adversity, and a dedication to improvement, even when it is slow.
+        </p>
+        <p>
+            I believe these crucial years have shaped who I am today. They have significantly impacted my cognitive style, my work ethic, and my approach to seeking opportunities. I have always been driven by the idea of being involved in activities in an intense, purposeful way, not just completing tasks.
+        </p>
+      </div>
+    </section>
+
+    <section class="story-block fade">
+      <div class="story-image">
+        <img src="images1/horse-portrait.jpeg" alt="Athletic journey image">
+      </div>
+      <div class="story-text">
+        <h2>The Years that Built Me</h2>
+        <p>
+          Over time, my path expanded into a combination of entrepreneurship, equestrian sport, leadership, and academics. Each one demanded a different version of me. Some required creativity and vision, others demanded patience and technical thinking, while the rest tested mental toughness.
+        </p>
+        <p>
+          These experiences did not stay separate. They came together and taught me how to adapt, how to communicate with different people, and how to keep moving even when the path ahead was not fully clear.
+        </p>
+      </div>
+    </section>
+
+
+    
+
+    <section class="resume-section fade" id="achievements">
+        <h2>Key Achievements</h2>
+        <div class="resume-grid">
+          <div class="resume-card">
+            <h3>Equestrian Excellence</h3>
+            <p>
+              Secured 3rd place at the National Championships, marking a major milestone in my competitive equestrian journey and reflecting years of discipline, consistency, and training.
+            </p>
+            <p>
+              Competed internationally at the Longines event in Doha, Qatar, gaining exposure to world-class standards and elite competition.
+            </p>
+            <p>
+              Shortlisted among 40 athletes being considered to represent India at the Asian Games, a recognition of long-term performance and potential in show jumping.
+            </p>
+            <a href="images1/Athlete-Long-list-for-Asian-Games-2026_.pdf" target="_blank" class="cert-link">View Selection List</a>
+          </div>
+
+          <div class="resume-card">
+            <h3>Scuba Diving Experience</h3>
+            <p>
+                Earned the SSI Open Water Diver certification, building practical expertise in underwater navigation, safety procedures, and marine exploration. With multiple logged dives, I developed strong adaptability, situational awareness, and the ability to stay composed under pressure. This experience enhanced my confidence in unfamiliar environments while reinforcing discipline, precision, and effective decision-making in dynamic conditions.
+            </p>
+            <p>
+                This experience enhanced my confidence in unfamiliar environments while reinforcing discipline, precision, and effective decision-making in dynamic conditions.
+            </p>
+            <a href="images1/Scuba Diving_Certificate.jpeg" target="_blank" class="cert-link">View Certificate</a>
+          </div>
+
+          <div class="resume-card">
+            <h3>Artistic creativity </h3>
+            <p>
+              Received Kalai Ilamani award which is one of the highest fine arts awards given by the Government of Tamil Nadu. 
+            </p>
+
+            <p>
+                I got this award for the artworks which i did. Through rigorous practice, perfection and try for consecutive 2 years, I was able to receive this award in the year 2023-24. 
+            </p>
+            <a href="images1/Kalai_Ilamani_Award.jpeg" target="_blank" class="cert-link">View Award</a>
+            
+          </div>
+
+          <div class="resume-card">
+            <h3>Leadership Roles</h3>
+            <p>
+              Served in leadership and responsibility-driven roles that developed my confidence, teamwork, and ability to manage tasks with consistency and accountability.
+            </p>
+            <a href="images1/Investiture_Ceremony.jpeg" target="_blank" class="cert-link">View Image</a>
+          </div>
+        </div>
+      </section>
+      
+      <section class="resume-section fade" id="education">
+        <h2>Education</h2>
+        <div class="resume-grid">
+          <div class="resume-card">
+            <h3>IIM Bangalore</h3>
+            <div class="resume-meta">BBA in Digital Business and Entrepreneurship</div>
+            <p>
+              Currently pursuing undergraduate studies focused on entrepreneurship, innovation, business strategy, communication, and digital business.
+            </p>
+            <section class="profile-image fade">
+                <img src="images1/IIM.jpeg" alt="Nakshath at IIM Bangalore">
+              </section>
+          </div>
+      
+          <div class="resume-card">
+            <h3>Schooling</h3>
+            <div class="resume-meta">Did my schooling from 10X International School in International Baccalaureate curriculum</div>
+            <p>
+              Built a strong academic foundation while actively participating in leadership, entrepreneurship, equestrian sport, and co-curricular initiatives.
+            </p>
+            <section class="profile-image fade">
+                <img src="images1/Graduation.png" alt="Nakshath at Graduation">
+              </section>
+          </div>
+        </div>
+      </section>
+      
+      <section class="resume-section fade" id="experience">
+        <h2>Experience & Internships</h2>
+
+        <div class="resume-card">
+            <h3>Ignite Youngs Minds Summer Program</h3>
+            <p>
+              Got selected to attend and participate in a highly-selective summer programme of a week organised by Cambridge Judge Business School and got received life-long connections and skills. 
+            </p>
+            <a href="images1/Ignite Young Minds Programme.pdf" target="_blank" class="cert-link">View Certificate</a>
+            
+          </div>
+
+
+        <div class="resume-grid">
+          <div class="resume-card">
+            <h3>Internship Experience</h3>
+            <h4>Mumbai FC</h4>
+            <p>
+              Gained practical exposure through an internship under Mr. Jonathon Rego from Mumbai FC, which strengthened my understanding of professional work culture, discipline, and communication.
+            </p>
+          </div>
+      
+          <div class="resume-card">
+            <h3>Entrepreneurial Projects</h3>
+            <p>
+              Worked on multiple entrepreneurial ideas and branding projects, including ventures related to jewellery, equestrian infrastructure, and innovation-led business concepts.
+            </p>
+          </div>
+      
+        </div>
+      </section>
+      
+      <section class="resume-section fade" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+          <div class="skill-tag">Leadership</div>
+          <div class="skill-tag">Public Speaking</div>
+          <div class="skill-tag">Entrepreneurship</div>
+          <div class="skill-tag">Business Strategy</div>
+          <div class="skill-tag">Communication</div>
+          <div class="skill-tag">Teamwork</div>
+          <div class="skill-tag">Adaptability</div>
+          <div class="skill-tag">Creative Thinking</div>
+          <div class="skill-tag">Problem Solving</div>
+          <div class="skill-tag">Branding</div>
+        </div>
+      </section>
+
+      <section class="resume-section fade" id="certifications">
+        <h2>Certifications & Awards</h2>
+        <div class="resume-grid">
+
+            <div class="resume-card">
+                <h3>AGILE COIL Type Education Program 2026</h3>
+                <div class="resume-meta">Hiroshima University / AGILE COIL • 2026</div>
+                <p>
+                  Successfully completed the AGILE COIL type education program, reflecting international collaborative learning exposure.
+                </p>
+
+                <a href="images1/Agile Coil Certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+              </div>
+      
+          <div class="resume-card">
+            <h3>Higher Distinction</h3>
+            <div class="resume-meta">World Economics Cup • 2024</div>
+            <p>
+              Recognized with Higher Distinction for excellent performance in the 2024 World Economics Cup Continental Qualifier.
+            </p>
+
+            <a href="images1/WEC_Certificate_Higher Distinction.pdf" target="_blank" class="cert-link">View Certificate</a>
+          </div>
+      
+          <div class="resume-card">
+            <h3>Best in Microeconomics</h3>
+            <div class="resume-meta">Bretton Woods International Economics Championship • 2024</div>
+            <p>
+              Received the Best – Microeconomics award for outstanding knowledge and performance in economics at the championship.
+            </p>
+
+            <a href="images1/Bretton Woods Certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+          </div>
+      
+      
+          <div class="resume-card">
+            <h3>On-Premise Sales Job Simulation</h3>
+            <div class="resume-meta">Red Bull / Forage • 2023</div>
+            <p>
+              Completed a practical sales simulation involving account data analysis and overcoming sales objectives.
+            </p>
+
+            <a href="images1/Red bull certificate.pdf" target="_blank" class="cert-link">View Certificate</a>
+          </div>
+      
+        </div>
+      </section>
+      
+      <section class="resume-section fade" id="interests">
+        <h2>Other Interests</h2>
+        <div class="interests-list">
+          <div class="interest-tag">Equestrian Show Jumping</div>
+          <div class="interest-tag">Entrepreneurship</div>
+          <div class="interest-tag">Start-up Competitions</div>
+          <div class="interest-tag">Innovation</div>
+          <div class="interest-tag">Leadership Activities</div>
+          <div class="interest-tag">Community Service</div>
+        </div>
+      </section>
+
+    <footer class="footer" id="other interests">
+        © 2026 Nakshath Venkatesh • All Rights Reserved
+    </footer>
+  </main>
+
+  <script>
+    const elements = document.querySelectorAll('.fade');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+  
+    elements.forEach(el => observer.observe(el));
+  </script>
+  
+</body>
+</html>
+
+

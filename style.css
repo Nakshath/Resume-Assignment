@@ -1,0 +1,7 @@
+.story-image img {
+    transition: transform 0.5s ease;
+  }
+  
+  .story-image img:hover {
+    transform: scale(1.03);
+  }
